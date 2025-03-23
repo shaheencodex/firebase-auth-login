@@ -1,7 +1,6 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { auth, db } from "./firebase";
-import { setDoc, doc } from "firebase/firestore";
+import { auth } from "./firebase";
 
 import { toast } from "react-toastify";
 
@@ -19,9 +18,6 @@ function Register() {
       console.log(user);
 
       console.log("User Registered Successfully!!");
-      toast.success("User Registered Successfully!!", {
-        position: "top-center",
-      });
     } catch (error) {
       console.log(error.message);
       toast.error(error.message, {
@@ -40,6 +36,7 @@ function Register() {
           type="text"
           className="form-control"
           placeholder="First name"
+          value={fname}
           onChange={(e) => setFname(e.target.value)}
           required
         />
@@ -51,6 +48,7 @@ function Register() {
           type="text"
           className="form-control"
           placeholder="Last name"
+          value={lname}
           onChange={(e) => setLname(e.target.value)}
         />
       </div>
